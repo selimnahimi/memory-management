@@ -2,9 +2,12 @@ package com.gfa.memorymanagement.P03LingeringObjects;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Scanner;
 
-public class SP01Chat {
+public class ChatOptimized {
 
   public static void main(String[] args) throws Exception {
     optimized();
@@ -25,11 +28,6 @@ public class SP01Chat {
     public String toString() {
       return "[" + sentDate + "] " + sender + ": " + content;
     }
-
-    @Override
-    protected void finalize() {
-      System.out.println("Message is garbage collected!");
-    }
   }
 
   private static void optimized() throws Exception {
@@ -40,26 +38,15 @@ public class SP01Chat {
     String[] replies = loremIpsum.split("[ \n]");
 
     Scanner scanner = new Scanner(System.in);
-    boolean chatting = true;
     List<Message> messageHistory = new ArrayList<>();
 
-    System.out.print("Enter username: ");
-    String username = scanner.nextLine();
-
     // CHAT
-    for (int i = 0; i < 5000000; i++) {
-
-      // System.out.print("Enter message: ");
-      // String message = scanner.nextLine();
+    for (int i = 0; i < 10000000; i++) {
       String randomMessage = replies[(int) (Math.random() * replies.length)];
-      messageHistory.add(new Message(username, randomMessage));
+      messageHistory.add(new Message("User1", randomMessage));
 
       String randomReply = replies[(int) (Math.random() * replies.length)];
-      messageHistory.add(new Message("MrLorem", randomReply));
-    }
-
-    for (Message message : messageHistory) {
-      // System.out.println(message);
+      messageHistory.add(new Message("User2", randomReply));
     }
 
     System.out.println("Press enter to play hangman...");
@@ -69,7 +56,6 @@ public class SP01Chat {
 
     // HANGMAN
     boolean playing = true;
-    int lives = 5;
     String wordToGuess = "greenfoxacademy";
     List<String> guessed = new ArrayList<>();
 
@@ -78,7 +64,7 @@ public class SP01Chat {
 
       System.out.print("Enter a letter: ");
       String letter = scanner.nextLine();
-      if (letter.length() == 0)
+      if (letter.isEmpty())
         continue;
 
       letter = letter.substring(0, 1);

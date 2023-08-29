@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class SP01RandomizedMatrix {
+public class RandomizedMatrix {
   public static void main(String[] args) {
     // optimized();
     unoptimized();
