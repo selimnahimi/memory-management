@@ -1,14 +1,11 @@
 package com.gfa.memorymanagement.unoptimized.P05Caching;
 
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class SquareRoot
 {
+
   public static double square(double number){
     double t;
 
@@ -23,21 +20,10 @@ public class SquareRoot
   }
 
   public static void main(String[] args) {
-    unoptimized();
+    optimized();
   }
 
-  private static void unoptimized() {
-    CacheLoader<Double, Double> rootLoader = new CacheLoader<>() {
-      @Override
-      public Double load(Double key) {
-        return square(key);
-      }
-    };
-
-    LoadingCache<Double, Double> cache = CacheBuilder.newBuilder()
-            .maximumSize(1000)
-            .build(rootLoader);
-
+  private static void optimized() {
     List<Integer> numbers = new ArrayList<>();
 
     for (int i = 0; i < 1000000; i++) {
@@ -45,7 +31,7 @@ public class SquareRoot
     }
 
     for (double number : numbers) {
-      System.out.println("Square root of " + number + ": " + cache.getUnchecked(number));
+      System.out.println("Square root of " + number + ": " + square(number));
     }
   }
 }

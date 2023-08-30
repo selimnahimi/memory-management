@@ -1,7 +1,5 @@
 package com.gfa.memorymanagement.optimized.P01BloatedDataStructures;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 public class RandomizedMatrixOptimized {
