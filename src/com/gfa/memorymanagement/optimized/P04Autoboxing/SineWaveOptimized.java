@@ -1,7 +1,4 @@
-package com.gfa.memorymanagement.P04Autoboxing;
-
-import java.util.ArrayList;
-import java.util.List;
+package com.gfa.memorymanagement.optimized.P04Autoboxing;
 
 public class SineWaveOptimized {
     public static void main(String[] args) throws InterruptedException {

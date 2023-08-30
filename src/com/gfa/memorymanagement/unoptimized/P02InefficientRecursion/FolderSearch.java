@@ -1,4 +1,4 @@
-package com.gfa.memorymanagement.P02InefficientRecursion;
+package com.gfa.memorymanagement.unoptimized.P02InefficientRecursion;
 
 import java.io.File;
 import java.util.ArrayList;

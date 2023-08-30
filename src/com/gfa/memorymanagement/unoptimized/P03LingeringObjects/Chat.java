@@ -1,4 +1,4 @@
-package com.gfa.memorymanagement.P03LingeringObjects;
+package com.gfa.memorymanagement.unoptimized.P03LingeringObjects;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -7,10 +7,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
-public class ChatOptimized {
+public class Chat {
 
   public static void main(String[] args) throws Exception {
-    optimized();
+    unoptimized();
   }
 
   static class Message {
@@ -30,7 +30,7 @@ public class ChatOptimized {
     }
   }
 
-  private static void optimized() throws Exception {
+  private static void unoptimized() throws Exception {
     String loremIpsum = Files.readAllLines(Path.of("assets/loremipsum.txt")).stream()
             .reduce((out, elem) -> out + " " + elem)
             .get();
@@ -52,16 +52,12 @@ public class ChatOptimized {
     System.out.println("Press enter to play hangman...");
     scanner.nextLine();
 
-    messageHistory = new ArrayList<>();
-
     // HANGMAN
     boolean playing = true;
     String wordToGuess = "greenfoxacademy";
     List<String> guessed = new ArrayList<>();
 
     while (playing) {
-      System.gc();
-
       System.out.print("Enter a letter: ");
       String letter = scanner.nextLine();
       if (letter.isEmpty())

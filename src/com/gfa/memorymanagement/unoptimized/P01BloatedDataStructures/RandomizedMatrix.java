@@ -1,4 +1,4 @@
-package com.gfa.memorymanagement.P01BloatedDataStructures;
+package com.gfa.memorymanagement.unoptimized.P01BloatedDataStructures;
 
 import java.util.ArrayList;
 import java.util.List;
